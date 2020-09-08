@@ -10,39 +10,39 @@ trigger_map:
 workflows:
   deploy:
     steps:
-    - activate-ssh-key@4.0.3:
+    - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4.0.17: {}
-    - cache-pull@2.1.0: {}
-    - script@1.1.5:
+    - git-clone@4: {}
+    - cache-pull@2: {}
+    - script@1:
         title: Do anything with Script step
-    - certificate-and-profile-installer@1.10.1: {}
-    - xcode-test@2.3.2:
+    - certificate-and-profile-installer@1: {}
+    - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
         - scheme: "$BITRISE_SCHEME"
-    - xcode-archive@2.6.0:
+    - xcode-archive@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
         - scheme: "$BITRISE_SCHEME"
         - export_method: "$BITRISE_EXPORT_METHOD"
-    - deploy-to-bitrise-io@1.7.1: {}
-    - cache-push@2.2.0: {}
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
   primary:
     steps:
-    - activate-ssh-key@4.0.3:
+    - activate-ssh-key@4:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
-    - git-clone@4.0.17: {}
-    - cache-pull@2.1.0: {}
-    - script@1.1.5:
+    - git-clone@4: {}
+    - cache-pull@2: {}
+    - script@1:
         title: Do anything with Script step
-    - certificate-and-profile-installer@1.10.1: {}
-    - xcode-test@2.3.2:
+    - certificate-and-profile-installer@1: {}
+    - xcode-test@2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
         - scheme: "$BITRISE_SCHEME"
-    - deploy-to-bitrise-io@1.7.1: {}
-    - cache-push@2.2.0: {}
+    - deploy-to-bitrise-io@1: {}
+    - cache-push@2: {}
 app:
   envs:
   - opts:
